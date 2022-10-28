@@ -23,22 +23,22 @@ const addCommandsToClient = (client, commands) => {
 
 const deployCommands = async (commandsList) => {
 	const clientId = process.env['CLIENT_ID'];
-	const token = process.env['DISCORD_TOKEN'];
-	const guildId = process.env['GUILD_ID'];
+	const token = process.env['DEAD_MANS_BOT_TOKEN'];
+	const guildId = process.env['DEAD_MANS_ISLE_ID'];
 
-	const commands = commandsList.map(cmd => { return cmd.data.toJSON() });
+	const commands = commandsList.map(cmd => cmd.data.toJSON());
 	const rest = new REST({ version: '10' }).setToken(token);
 	try {
-		console.log(`Started refreshing ${commands.length} application (/) commands.`);
+		console.log(`Started deploying ${commands.length} application (/) commands.`);
 
-		const data = await rest.put(
+		rest.put(
 			Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands },
-		);
-
-		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+		).then(response => {
+			console.log(`Successfully deployed ${response.length} application (/) commands.`);
+		});
 	} catch (error) {
-		console.log(error.message);
+		console.log(error);
 	}
 };
 

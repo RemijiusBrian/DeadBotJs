@@ -1,4 +1,3 @@
-// const { REST } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 
@@ -25,6 +24,6 @@ const addEventListeners = async (client) => {
 
 module.exports = {
 	async registerEventListerners(client) {
-		await addEventListeners(client);
+		addEventListeners(client);
 	}
 };
