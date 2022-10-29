@@ -1,14 +1,16 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 
-const clientIntents = [GatewayIntentBits.Guilds];
-const client = new Client({ intents: clientIntents });
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildBans
+	]
+});
 
 // Initialize
-const runInits = (client) => {
-	require("./command-manager.js").registerCommands(client);
-	require("./event-manager.js").registerEventListerners(client);
-};
-runInits(client);
+require("./command-manager.js").registerCommands(client);
+require("./event-manager.js").registerEventListerners(client);
 
 const startServer = require("./server.js");
 startServer();
