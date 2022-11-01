@@ -1,5 +1,1 @@
-module.exports {
-    async function startServer() {
-
-    }
-}
+module.exports = {}
