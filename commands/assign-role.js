@@ -7,14 +7,14 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('assign-role')
 		.setDescription('Assign a role to a member')
-		.addMentionableOption(option =>
-			option.setName(KEY_MEMBER)
-				.setDescription('Member to assign the role to.')
-				.setRequired(true)
-		)
 		.addRoleOption(option =>
 			option.setName(KEY_ROLE)
 				.setDescription('Role to call upon')
+				.setRequired(true)
+		)
+		.addMentionableOption(option =>
+			option.setName(KEY_MEMBER)
+				.setDescription('Member to assign the role to.')
 				.setRequired(true)
 		),
 	async execute(interaction) {

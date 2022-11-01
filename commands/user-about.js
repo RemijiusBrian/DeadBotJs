@@ -13,7 +13,7 @@ module.exports = {
 	async execute(interaction) {
 		const member = interaction.options.getMentionable(KEY_MEMBER);
 		const roles = member.roles.cache;
-		const roleNames = roles.map(role => role.name).join(' | ');
+		const roleNames = roles.map(role => role.toString()).join(' | ');
 		const infoEmbed = new EmbedBuilder()
 			.setColor(member.displayColor)
 			.setTitle(member.user.tag)
