@@ -16,7 +16,7 @@ module.exports = {
 		const roleNames = roles.map(role => role.name).join(' | ');
 		const infoEmbed = new EmbedBuilder()
 			.setColor(member.displayColor)
-			.setTitle(member)
+			.setTitle(member.user.tag)
 			.addFields(
 				{ name: 'Bot', value: member.user.bot.toString(), inline: true },
 				{ name: 'Joined server on', value: member.joinedAt.toDateString(), inline: true },
