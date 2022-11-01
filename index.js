@@ -12,6 +12,4 @@ const client = new Client({
 require("./command-manager.js").registerCommands(client);
 require("./event-manager.js").registerEventListerners(client);
 
-// const startServer = require("./server.js");
-// startServer();
 client.login(process.env['BOT_TOKEN']);
