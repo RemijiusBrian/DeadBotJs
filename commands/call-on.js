@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, ChannelType } = require("discord.js");
 const Utils = require('../utils/utils.js');
-const minecrafterRoleId = process.env['ROLE_MINECRAFTER'];
 
 const KEY_ROLE = 'role';
 const KEY_ACTIVITY = 'activity';
@@ -37,6 +36,6 @@ module.exports = {
 		}
 
 		await interaction.reply({ content: 'On it!', ephemeral: true });
-		await channel.send(`Calling on ${role}${activity.length ? ` for ${activity} : ''` : ''}`);
+		await channel.send(`Calling on ${role}${activity.length ? ' for' + activity : ''}`);
 	}
 }
