@@ -28,7 +28,7 @@ module.exports = {
 			throw new Error('I don\'nt have permission to send messages there.');
 		}
 
-		await interaction.reply({ content: 'On it!', ephemeral: true });
 		await channel.send(message);
+		await interaction.reply({ content: 'Done!', ephemeral: true });
 	}
 }

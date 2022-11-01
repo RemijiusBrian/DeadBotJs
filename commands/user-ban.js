@@ -19,7 +19,8 @@ module.exports = {
 		.setDMPermission(false),
 	async execute(interaction) {
 		const member = interaction.options.getUser(KEY_MEMBER);
-		const reason = interaction.options.getString(KEY_REASON) ?? 'No Reason';
+		const reason = interaction.options.getString(KEY_REASON) ?? 'Reasons Unknown';
+
 		await interaction.guild.members.ban(member, { reason });
 		await interaction.reply(`Banned ${member.tag} for ${reason}`);
 	}
