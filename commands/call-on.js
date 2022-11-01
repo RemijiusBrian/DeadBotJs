@@ -18,11 +18,13 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName(KEY_ACTIVITY)
 				.setDescription('Activity to call for')
+				.setRequired(false)
 		)
 		.addChannelOption(option =>
 			option.setName(KEY_CHANNEL)
 				.setDescription('Channel to call on')
 				.addChannelTypes(ChannelType.GuildText)
+				.setRequired(false)
 		),
 	async execute(interaction) {
 		const role = interaction.options.getRole(KEY_ROLE);
@@ -35,6 +37,6 @@ module.exports = {
 		}
 
 		await interaction.reply({ content: 'On it!', ephemeral: true });
-		await channel.send(`Calling on ${role}${activity.length ? ` for ${activity}` : ''}`);
+		await channel.send(`Calling on ${role}${activity.length ? ` for ${activity} : ''` : ''}`);
 	}
 }
