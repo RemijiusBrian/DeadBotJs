@@ -16,18 +16,16 @@ module.exports = {
 		const roleNames = roles.map(role => role.toString()).join(' | ');
 		const infoEmbed = new EmbedBuilder()
 			.setColor(member.displayColor)
-			.setTitle(member.toString())
+			.setTitle(member.user.tag)
+			.setDescription(member.nickname)
 			.addFields(
+				{ name: 'Certified', value: roles.has(process.env['CERTIFIED_DEAD_ROLE']).toString() },
 				{ name: 'Bot', value: member.user.bot.toString(), inline: true },
 				{ name: 'Joined server on', value: member.joinedAt.toDateString(), inline: true },
 				{ name: 'Roles', value: roleNames }
 			)
 			.setImage(member.displayAvatarURL())
 			.setTimestamp();
-
-		if (roles.has(process.env['CERTIFIED_DEAD_ROLE'])) {
-			infoEmbed.setDescription('Certified Dead!');
-		}
 
 		await interaction.reply({ content: 'Getting Info...', ephemeral: true });
 		await interaction.channel.send({ embeds: [infoEmbed] });
