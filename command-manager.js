@@ -23,7 +23,7 @@ const addCommandsToClient = (client, commands) => {
 
 const deployCommands = async (commandsList) => {
 	const clientId = process.env['CLIENT_ID'];
-	const token = process.env['DEAD_MANS_BOT_TOKEN'];
+	const token = process.env['BOT_TOKEN'];
 	const guildId = process.env['DEAD_MANS_ISLE_ID'];
 
 	const commands = commandsList.map(cmd => cmd.data.toJSON());
@@ -31,12 +31,11 @@ const deployCommands = async (commandsList) => {
 	try {
 		console.log(`Started deploying ${commands.length} application (/) commands.`);
 
-		rest.put(
+		const response = await rest.put(
 			Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands },
-		).then(response => {
-			console.log(`Successfully deployed ${response.length} application (/) commands.`);
-		});
+		)
+		console.log(`Successfully deployed ${response.length} application (/) commands.`);
 	} catch (error) {
 		console.log(error);
 	}
