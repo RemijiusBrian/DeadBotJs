@@ -27,7 +27,7 @@ module.exports = {
 		),
 	async execute(interaction) {
 		const role = interaction.options.getRole(KEY_ROLE);
-		const activity = interaction.options.getString(KEY_ACTIVITY);
+		const activity = interaction.options.getString(KEY_ACTIVITY) ?? '';
 		const channel = interaction.options.getChannel(KEY_CHANNEL) ?? interaction.channel;
 
 		// Check for permission to send message in channel
