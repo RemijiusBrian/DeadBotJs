@@ -18,7 +18,7 @@ module.exports = {
 				.setTitle(`${addedMember}, Welcome aboard **The Dead Man's Isle!** ya bloomin cockroach!`)
 				.setThumbnail(guild.bannerURL())
 				.setTimestamp()
-				.setFooter('Dead Men tell no tales');
+				.setFooter({ text: 'Dead Men Tell No Tales' });
 
 			await memeberEventChannel.send({ embeds: [welcomeEmbed] });
 		} catch (error) {
