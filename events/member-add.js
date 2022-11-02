@@ -1,11 +1,11 @@
 const { Events, EmbedBuilder } = require("discord.js");
+const utils = require('../utils/utils');
 
 module.exports = {
 	event: Events.GuildMemberAdd,
 	once: false,
 	async onEvent(member) {
 		try {
-			console.log('Member Added...');
 			const guild = member.guild;
 			const memeberEventChannel = await guild.channels.fetch(process.env['MEMBER_EVENT_CHANNEL']);
 			let addedMember = member;
@@ -13,12 +13,10 @@ module.exports = {
 				addedMember = await member.roles.add(process.env['MEMBER_ROLE_ID']);
 			}
 
-			const welcomeEmbed = new EmbedBuilder()
+			const welcomeEmbed = utils.baseEmbedBuilder()
 				.setColor(addedMember.displayColor)
-				.setTitle(`${addedMember}, Welcome aboard **The Dead Man's Isle!** ya bloomin cockroach!`)
-				.setThumbnail(guild.bannerURL())
-				.setTimestamp()
-				.setFooter({ text: 'Dead Men Tell No Tales' });
+				.setDescription(`${addedMember.toString()}, Welcome aboard **The Dead Man's Isle!** ya bloomin cockroach!`)
+				.setThumbnail(guild.bannerURL());
 
 			await memeberEventChannel.send({ embeds: [welcomeEmbed] });
 		} catch (error) {

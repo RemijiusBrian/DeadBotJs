@@ -1,4 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const utils = require('../utils/utils');
+
 const KEY_MEMBER = 'member';
 
 module.exports = {
@@ -14,7 +16,7 @@ module.exports = {
 		const member = interaction.options.getMentionable(KEY_MEMBER);
 		const roles = member.roles.cache;
 		const roleNames = roles.map(role => role.toString()).join(' | ');
-		const infoEmbed = new EmbedBuilder()
+		const infoEmbed = utils.baseEmbedBuilder()
 			.setColor(member.displayColor)
 			.setTitle(member.user.tag)
 			.setDescription(member.nickname)
@@ -24,8 +26,7 @@ module.exports = {
 				{ name: 'Joined server on', value: member.joinedAt.toDateString(), inline: true },
 				{ name: 'Roles', value: roleNames }
 			)
-			.setImage(member.displayAvatarURL())
-			.setTimestamp();
+			.setImage(member.displayAvatarURL());
 
 		await interaction.reply({ content: 'Getting Info...', ephemeral: true });
 		await interaction.channel.send({ embeds: [infoEmbed] });
