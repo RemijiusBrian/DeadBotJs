@@ -8,12 +8,15 @@ module.exports = {
 			console.log('Member Added...');
 			const guild = member.guild;
 			const memeberEventChannel = await guild.channels.fetch(process.env['MEMBER_EVENT_CHANNEL']);
-			const newMember = await member.roles.add(process.env['MEMBER_ROLE_ID']);
+			let addedMember = member;
+			if (!member.user.bot) {
+				addedMember = await member.roles.add(process.env['MEMBER_ROLE_ID']);
+			}
+
 			const welcomeEmbed = new EmbedBuilder()
-				.setColor(newMember.displayColor)
-				.setTitle(`Welcome aboard ${newMember}, **The Dead Man's Isle!**`)
-				.setThumbnail(newMember.displayAvatarURL())
-				.setImage(guild.bannerURL())
+				.setColor(addedMember.displayColor)
+				.setTitle(`${addedMember}, Welcome aboard **The Dead Man's Isle!** ya bloomin cockroach!`)
+				.setThumbnail(guild.bannerURL())
 				.setTimestamp()
 				.setFooter('Dead Men tell no tales');
 
