@@ -7,7 +7,7 @@ module.exports = {
 		try {
 			console.log('Member Removed');
 			const memeberEventChannel = await member.guild.channels.fetch(process.env['MEMBER_EVENT_CHANNEL']);
-			await memeberEventChannel.send(`${member.user.tag} has walked the plank!`);
+			await memeberEventChannel.send(`**${member.user.tag}** has walked the plank!`);
 		} catch (error) {
 			console.error(error);
 		}

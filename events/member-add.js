@@ -11,7 +11,7 @@ module.exports = {
 			const newMember = await member.roles.add(process.env['MEMBER_ROLE_ID']);
 			const welcomeEmbed = new EmbedBuilder()
 				.setColor(newMember.displayColor)
-				.setTitle(`Welcome ${newMember}, To the Dead Man's Isle!`)
+				.setTitle(`Welcome aboard ${newMember}, **The Dead Man's Isle!**`)
 				.setThumbnail(newMember.displayAvatarURL())
 				.setImage(guild.bannerURL())
 				.setTimestamp()
