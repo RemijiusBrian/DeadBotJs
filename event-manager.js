@@ -14,10 +14,14 @@ const getEventListeners = () => {
 const addEventListeners = async (client) => {
 	const listeners = getEventListeners();
 	listeners.forEach(listener => {
-		if (listener.once) {
-			client.once(listener.event, (...args) => listener.onEvent(...args));
-		} else {
-			client.on(listener.event, (...args) => listener.onEvent(...args));
+		try {
+			if (listener.once) {
+				client.once(listener.event, (...args) => listener.onEvent(...args));
+			} else {
+				client.on(listener.event, (...args) => listener.onEvent(...args));
+			}
+		} catch (error) {
+			console.error(error);
 		}
 	});
 };
