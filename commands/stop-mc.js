@@ -11,7 +11,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
         exec(STOP_MC_COMMAND, async (err, stdout, stderr) => {
-            await interaction.editReply('Stopping your Minecraft server...');
+            await interaction.editReply('Your Minecraft server has stopped.');
         });
     }
 }
