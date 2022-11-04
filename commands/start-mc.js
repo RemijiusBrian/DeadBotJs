@@ -12,9 +12,9 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
         exec(START_MC_COMMAND, async (err, stdout, stderr) => {
             if (stderr || err) {
-                await interaction.reply(stderr ?? err.message);
+                await interaction.editReply(stderr ?? err.message);
             } else {
-                await interaction.reply('Starting your Minecraft server...');
+                await interaction.editReply('Starting your Minecraft server...');
             }
         });
     }
