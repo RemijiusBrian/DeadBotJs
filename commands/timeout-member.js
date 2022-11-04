@@ -28,6 +28,6 @@ module.exports = {
         const reason = interaction.options.getString(KEY_REASON) ?? 'Reasons Unknown';
 
         await member.timeout(time * 60 * 1000, reason);
-        await interaction.reply(`${member} is on a timeout for \`\`\`${reason}\`\`\``);
+        await interaction.reply(`${member} is on a timeout for \`${reason}\``);
     }
 }
