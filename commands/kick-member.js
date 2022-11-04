@@ -22,6 +22,6 @@ module.exports = {
 		const reason = interaction.options.getString(KEY_REASON) ?? 'Reasons Unknown';
 
 		await member.kick(reason);
-		await interaction.reply(`Kicked ${member.user.tag} for ${reason}`);
+		await interaction.reply(`Kicked ${member.user.tag} for \`${reason}\``);
 	}
 }

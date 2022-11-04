@@ -22,6 +22,6 @@ module.exports = {
 		const reason = interaction.options.getString(KEY_REASON) ?? 'Reasons Unknown';
 
 		await member.ban({ deleteMessageSeconds: 0, reason });
-		await interaction.reply(`Banned ${member.user.tag} for ${reason}`);
+		await interaction.reply(`Banned ${member.user.tag} for \`${reason}\``);
 	}
 }
