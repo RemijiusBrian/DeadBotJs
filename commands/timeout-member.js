@@ -21,15 +21,13 @@ module.exports = {
         .addStringOption(option =>
             option.setName(KEY_REASON)
                 .setDescription('Reason for Timeout')
-        )
-        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
-        .setDMPermission(false),
+        ),
     async execute(interaction) {
         const member = interaction.options.getMentionable(KEY_MEMBER);
         const time = interaction.options.getInteger(KEY_TIME);
         const reason = interaction.options.getString(KEY_REASON) ?? 'Reasons Unknown';
 
         await member.timeout(time * 60 * 1000, reason);
-        await interaction.reply(`${member} is on a timeout for ${reason}`);
+        await interaction.reply(`${member} is on a timeout for \`\`\`${reason}\`\`\``);
     }
 }
