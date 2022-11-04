@@ -10,7 +10,7 @@ module.exports = {
         .setDescription('Stops your Minecraft server'),
     async execute(interaction) {
         await interaction.deferReply();
-        exec(START_MC_COMMAND, async (err, stdout, stderr) => {
+        exec(STOP_MC_COMMAND, async (err, stdout, stderr) => {
             await interaction.editReply('Stopping your Minecraft server...');
         });
     }
