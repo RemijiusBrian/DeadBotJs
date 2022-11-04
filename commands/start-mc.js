@@ -11,7 +11,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
         exec(START_MC_COMMAND, async (err, stdout, stderr) => {
-            await interaction.editReply('Starting your Minecraft server...');
+            await interaction.editReply('`Starting your Minecraft server...`');
         });
     }
 }
