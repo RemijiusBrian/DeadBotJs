@@ -35,7 +35,7 @@ module.exports = {
 			throw new Error('I don\'nt have permission to send messages there.');
 		}
 
-		await channel.send(`Calling on ${role}${activity.length ? ' for' + activity : ''}`);
+		await channel.send(`Calling on ${role}${activity.length ? ` For ${activity}` : ''}`);
 		await interaction.reply({ content: 'Called', ephemeral: true });
 	}
 }
