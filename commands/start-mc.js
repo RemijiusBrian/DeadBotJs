@@ -1,5 +1,8 @@
 const { SlashCommandBuilder } = require("discord.js");
 const mcUtils = require('../utils/mc-utils');
+const exec = require('child_process').exec;
+
+const START_MC_COMMAND = 'gcloud compute instances start --zone \"asia-south2-a\" \"supercomputer\"  --project \"verdant-algebra-364611\"';
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,6 +10,12 @@ module.exports = {
         .setDescription('Starts the Minecraft server'),
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
-        await interaction.reply('Working on it...');
+        exec(START_MC_COMMAND, async (err, stdout, stderr) => {
+            if (stderr || err) {
+                await interaction.reply(stderr ?? err.message);
+            } else {
+                await interaction.reply('Starting your Minecraft server...');
+            }
+        });
     }
 }

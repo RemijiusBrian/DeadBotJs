@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
+
 const KEY_MEMBER = 'member';
 const KEY_TIME = 'time';
 const KEY_REASON = 'reason';
