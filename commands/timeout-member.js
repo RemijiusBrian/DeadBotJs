@@ -5,9 +5,9 @@ const KEY_REASON = 'reason';
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('timeout')
+        .setName('shut-up')
         .setDescription('Timeout a member')
-        .addUserOption(option =>
+        .addMentionableOption(option =>
             option.setName(KEY_MEMBER)
                 .setDescription('Timeout target')
                 .setRequired(true)
@@ -24,7 +24,7 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
         .setDMPermission(false),
     async execute(interaction) {
-        const member = interaction.options.getUser(KEY_MEMBER);
+        const member = interaction.options.getMentionable(KEY_MEMBER);
         const time = interaction.options.getInteger(KEY_TIME);
         const reason = interaction.options.getString(KEY_REASON) ?? 'Reasons Unknown';
 
