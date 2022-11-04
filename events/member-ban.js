@@ -11,7 +11,7 @@ module.exports = {
 
             const banEmbed = utils.baseEmbedBuilder()
                 .setDescription(`**${ban.user.tag}** was banned for ${ban.reason}`)
-                .setImage('https://images.app.goo.gl/JETYniemtFfAUv8q9');
+                .setImage('https://media.tenor.com/20Bv1f8Vx30AAAAC/thor-banned-ban-hammer.gif');
 
             await memeberEventChannel.send({ embeds: [banEmbed] });
         } catch (error) {
