@@ -6,7 +6,7 @@ const baseEmbedBuilder = () => new EmbedBuilder()
 	.setFooter({ text: 'Dead Men Tell No Tales' })
 	.setTimestamp();
 
-const isCertified = (member) => member.roles.cache.has(process.env['CERTIFIED_ROLE_ID']);
+const isCertified = (member) => member.roles.cache.has(process.env['CERTIFIED_DEAD_ROLE']);
 
 const denyIfNotCertified = async (interaction, editReply = false) => {
 	if (!isCertified(interaction.member)) {

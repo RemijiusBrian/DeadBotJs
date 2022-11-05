@@ -14,14 +14,13 @@ module.exports = {
 		),
 	async execute(interaction) {
 		const member = interaction.options.getMentionable(KEY_MEMBER);
-		const roles = member.roles.cache;
-		const roleNames = roles.map(role => role.toString()).join(' | ');
+		const roleNames = member.roles.cache.map(role => role.toString()).join(' | ');
 		const infoEmbed = utils.baseEmbedBuilder()
 			.setColor(member.displayColor)
 			.setTitle(member.user.tag)
 			.setDescription(member.nickname)
 			.addFields(
-				{ name: 'Certified', value: roles.has(process.env['CERTIFIED_DEAD_ROLE']).toString() },
+				{ name: 'Certified', value: utils.isCertified(member).toString().toString() },
 				{ name: 'Bot', value: member.user.bot.toString(), inline: true },
 				{ name: 'Joined server on', value: member.joinedAt.toDateString(), inline: true },
 				{ name: 'Roles', value: roleNames }
