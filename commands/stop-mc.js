@@ -11,7 +11,8 @@ module.exports = {
         .setDescription('Stops your Minecraft server'),
     async execute(interaction) {
         await interaction.deferReply();
-        if (utils.denyIfNotCertified(interaction, true)) return;
+        const denied = await utils.denyIfNotCertified(interaction, true)
+        if (denied) return;
 
         exec(STOP_MC_COMMAND, async (err, stdout, stderr) => {
             await interaction.editReply('`Your Minecraft server has stopped.`');

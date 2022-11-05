@@ -18,7 +18,8 @@ module.exports = {
                 .setDescription('Reason for certifying')
         ),
     async execute(interaction) {
-        if (utils.denyIfNotCertified(interaction)) return;
+        const denied = await utils.denyIfNotCertified(interaction);
+        if (denied) return;
 
         const member = interaction.options.getMentionable(KEY_MEMBER);
         const reason = interaction.options.getString(KEY_REASON);
