@@ -3,6 +3,7 @@ const utils = require('../utils/utils');
 
 const KEY_MEMBER = 'member';
 const KEY_REASON = 'reason';
+const WELCOME_GIF = 'https://media.tenor.com/9zjRb6CqPZIAAAAC/welcome-pirates.gif';
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,7 +27,7 @@ module.exports = {
 
         const certifiedMember = await member.roles.add(process.env['CERTIFIED_DEAD_ROLE'], reason);
         const memberEventsChannel = await utils.getMemberEventsChannel(interaction.guild);
-        await memberEventsChannel.send(`Welcome to the \`Lordship\`, ${certifiedMember}\nhttps://media.tenor.com/9zjRb6CqPZIAAAAC/welcome-pirates.gif`)
+        await memberEventsChannel.send(`Welcome to the **Lordship**, ${certifiedMember}\nYou\'ve been \`Certified\`\n${WELCOME_GIF}`);
         await interaction.reply({ content: 'It be done!', ephemeral: true });
     }
 }
