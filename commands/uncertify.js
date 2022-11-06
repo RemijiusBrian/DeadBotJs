@@ -7,16 +7,16 @@ const WELCOME_GIF = 'https://media.tenor.com/9zjRb6CqPZIAAAAC/welcome-pirates.gi
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('certify')
-        .setDescription('Certify a maggot')
+        .setName('un-certify')
+        .setDescription('Uncertify a maggot')
         .addMentionableOption(option =>
             option.setName(KEY_MEMBER)
-                .setDescription('Member to certify')
+                .setDescription('Member to uncertify')
                 .setRequired(true)
         )
         .addStringOption(option =>
             option.setName(KEY_REASON)
-                .setDescription('Reason for certifying')
+                .setDescription('Reason for uncertifying')
         ),
     async execute(interaction) {
         const denied = await utils.denyIfNotCertified(interaction);
@@ -25,9 +25,9 @@ module.exports = {
         const member = interaction.options.getMentionable(KEY_MEMBER);
         const reason = interaction.options.getString(KEY_REASON);
 
-        const certifiedMember = await member.roles.add(process.env['CERTIFIED_DEAD_ROLE'], reason);
+        const certifiedMember = await member.roles.remove(process.env['CERTIFIED_DEAD_ROLE'], reason);
         const memberEventsChannel = await utils.getMemberEventsChannel(interaction.guild);
-        await memberEventsChannel.send(`Welcome to the **Lordship**, ${certifiedMember}\nYou\'ve been \`Certified\`\n${WELCOME_GIF}`);
+        await memberEventsChannel.send(`${certifiedMember} is now a mere Peasent\`[Uncertified]\``);
         await interaction.reply({ content: 'It be done!', ephemeral: true });
     }
 }
