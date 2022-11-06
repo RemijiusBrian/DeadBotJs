@@ -3,7 +3,6 @@ const utils = require('../utils/utils');
 
 const KEY_MEMBER = 'member';
 const KEY_REASON = 'reason';
-const WELCOME_GIF = 'https://media.tenor.com/9zjRb6CqPZIAAAAC/welcome-pirates.gif';
 
 module.exports = {
     data: new SlashCommandBuilder()
